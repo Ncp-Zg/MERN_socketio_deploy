@@ -9,7 +9,7 @@ mongoose.connect(process.env.MONGO).then(()=>{
 
 const io = require("socket.io")((process.env.PORT || 8900),{
     cors : {
-        origin:"http://localhost:5000"
+        origin:true
     }
 }); 
 
