@@ -1,14 +1,17 @@
 const mongoose = require("mongoose");
 const User = require("./models/userModel");
 require("dotenv").config()
+const cors = require("cors")
 
 mongoose.connect(process.env.MONGO).then(()=>{
     console.log("mongodb is connected")
 })
 
-const io = require("socket.io")(8900,{
-    cors:true
-});
+const io = require("socket.io")((process.env.PORT || 8900),{
+    cors : {
+        origin:"http://localhost:5000"
+    }
+}); 
 
 let seller;
 let data;
